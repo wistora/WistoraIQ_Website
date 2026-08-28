@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================
+         META INFORMATION
+    ========================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Courses | Wistora IQ Solutions</title>
+
+    <link
+        rel="icon"
+        href="favicon.png"
+    >
+
+
+    <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    >
+
+
+    <!-- =========================
+         CSS
+    ========================== -->
+
+    <style>
+
+        /* ========================================
+           ROOT VARIABLES
+        ======================================== */
+
+        :root {
+            --navy: #0B0E2E;
+            --cyan: #4FE3F0;
+            --text: #111431;
+            --secondary: #5B6478;
+            --background: #F5F8FB;
+            --border: #E1E5ED;
+            --accent: #149BB5;
+            --white: #FFFFFF;
+        }
+
+
+        /* ========================================
+           GLOBAL STYLES
+        ======================================== */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: "Inter", sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+        }
+
+
+        a {
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 10;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 32px;
+
+            background: rgba(11, 14, 46, 0.82);
+
+            backdrop-filter: blur(14px);
+
+            color: var(--white);
+        }
+
+
+        /* ----------------------------------------
+           NAVIGATION BRAND
+        ---------------------------------------- */
+
+        .nav-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .nav-brand img {
+            height: 34px;
+        }
+
+
+        .nav-brand span {
+            display: block;
+
+            font-weight: 600;
+
+            font-size: 15px;
+        }
+
+
+        .nav-brand small {
+            display: block;
+
+            color: var(--cyan);
+
+            font-size: 9px;
+
+            letter-spacing: 0.1em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ----------------------------------------
+           NAVIGATION LINKS
+        ---------------------------------------- */
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 34px;
+        }
+
+
+        .nav-links > a,
+        .nav-more-toggle {
+            font-family: "Inter", sans-serif;
+
+            font-size: 13.5px;
+
+            font-weight: 500;
+
+            color: rgba(255, 255, 255, 0.78);
+
+            padding: 4px 0;
+        }
+
+
+        /* ========================================
+           MORE DROPDOWN
+        ======================================== */
+
+        .nav-more {
+            position: relative;
+        }
+
+
+        .nav-more-toggle {
+            background: none;
+
+            border: none;
+
+            cursor: pointer;
+        }
+
+
+        .nav-more-toggle::after {
+            content: " ▾";
+
+            color: var(--cyan);
+
+            font-size: 10px;
+        }
+
+
+        .nav-more-menu {
+            position: absolute;
+
+            top: 32px;
+            left: -16px;
+
+            min-width: 165px;
+
+            padding: 9px;
+
+            list-style: none;
+
+            background: var(--navy);
+
+            border: 1px solid rgba(79, 227, 240, 0.3);
+
+            border-radius: 10px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform: translateY(6px);
+
+            transition: 0.2s;
+        }
+
+
+        .nav-more-menu a {
+            display: block;
+
+            padding: 9px 10px;
+
+            white-space: nowrap;
+        }
+
+
+        .nav-more:hover .nav-more-menu,
+        .nav-more:focus-within .nav-more-menu {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: none;
+        }
+
+
+        /* ========================================
+           MOBILE MENU BUTTON
+        ======================================== */
+
+        .nav-toggle {
+            display: none;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            background: none;
+
+            border: none;
+        }
+
+
+        .nav-toggle span {
+            width: 22px;
+
+            height: 2px;
+
+            background: var(--white);
+        }
+
+
+        /* ========================================
+           MAIN CONTENT
+        ======================================== */
+
+        .wrap {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 140px 25px 80px;
+        }
+
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+
+        .eyebrow {
+            color: var(--accent);
+
+            font-size: 12px;
+
+            letter-spacing: 0.12em;
+
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 70px);
+
+            margin: 14px 0;
+        }
+
+
+        .hero p {
+            max-width: 620px;
+
+            color: var(--secondary);
+
+            line-height: 1.7;
+        }
+
+        .hero {
+            animation: courseHeroIn 0.9s cubic-bezier(.22,.9,.31,1) both;
+        }
+
+        .hero h1 {
+            animation: courseTitleIn 0.8s cubic-bezier(.22,.9,.31,1) 0.12s both;
+        }
+
+        .hero p {
+            animation: courseCopyIn 0.8s cubic-bezier(.22,.9,.31,1) 0.24s both;
+        }
+
+
+        /* ========================================
+           COURSE GRID
+        ======================================== */
+
+        .grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 18px;
+
+            margin-top: 42px;
+        }
+
+
+        /* ========================================
+           COURSE CARD
+        ======================================== */
+
+        .card {
+            background: var(--white);
+
+            overflow: hidden;
+
+            padding: 25px;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            opacity: 0;
+            animation: courseCardIn 0.75s cubic-bezier(.22,.9,.31,1) forwards;
+            transition: transform 0.3s cubic-bezier(.22,.9,.31,1), box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.2s; }
+        .card:nth-child(2) { animation-delay: 0.34s; }
+        .card:nth-child(3) { animation-delay: 0.48s; }
+        .card:nth-child(4) { animation-delay: 0.62s; }
+        .card:nth-child(5) { animation-delay: 0.76s; }
+        .card:nth-child(6) { animation-delay: 0.9s; }
+        .card:hover { transform: translateY(-8px); border-color: rgba(20,155,181,.45); box-shadow: 0 22px 35px -24px rgba(11,14,46,.6); }
+
+        @keyframes courseHeroIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes courseTitleIn { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes courseCopyIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: translateX(0); } }
+        @keyframes courseCardIn { from { opacity: 0; transform: translateY(28px) scale(.96); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+            .card { opacity: 1; }
+        }
+
+
+        .card h2 {
+            font-size: 20px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .card img {
+            display: block;
+
+            width: calc(100% + 50px);
+            height: 170px;
+
+            margin: -25px -25px 22px;
+
+            object-fit: cover;
+
+            transition: transform 0.4s cubic-bezier(.22,.9,.31,1);
+        }
+
+
+        .card:hover img {
+            transform: scale(1.06);
+        }
+
+
+        .card p {
+            color: var(--secondary);
+
+            line-height: 1.6;
+        }
+
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+
+        /* ----------------------------------------
+           TABLET
+        ---------------------------------------- */
+
+        @media (max-width: 980px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .nav-toggle {
+                display: flex;
+            }
+
+        }
+
+
+        /* ----------------------------------------
+           MOBILE
+        ---------------------------------------- */
+
+        @media (max-width: 620px) {
+
+            .nav {
+                padding: 16px 20px;
+            }
+
+
+            .nav-brand span {
+                font-size: 12px;
+            }
+
+
+            .wrap {
+                padding-inline: 20px;
+            }
+
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+
+    <nav class="nav">
+
+
+        <!-- ----------------------------------------
+             BRAND
+        ---------------------------------------- -->
+
+        <a
+            href="index.html#top"
+            class="nav-brand"
+        >
+
+            <img
+                src="logo-full-web.png"
+                alt="Wistora IQ Solutions logo"
+            >
+
+            <div>
+
+                <span>
+                    WISTORA IQ SOLUTIONS
+                </span>
+
+                <small>
+                    Technology Meets Intelligence
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <!-- ----------------------------------------
+             DESKTOP NAVIGATION LINKS
+        ---------------------------------------- -->
+
+        <div class="nav-links">
+
+
+            <a href="index.html#about">
+                About
+            </a>
+
+
+            <a href="index.html#services">
+                Services
+            </a>
+
+
+            <a href="index.html#why">
+                Why Us
+            </a>
+
+
+            <a href="index.html#career">
+                Programs
+            </a>
+
+
+            <a href="careers.html">
+                Careers
+            </a>
+
+
+            <!-- ------------------------------------
+                 MORE DROPDOWN
+            ------------------------------------- -->
+
+            <div class="nav-more">
+
+
+                <button class="nav-more-toggle">
+                    More
+                </button>
+
+
+                <ul class="nav-more-menu">
+
+
+                    <li>
+                        <a href="courses.html">
+                            Courses
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="gallery.html">
+                            Gallery
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="testimonials.html">
+                            Testimonials
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="news.html">
+                            News
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+
+        </div>
+
+
+        <!-- ----------------------------------------
+             MOBILE MENU BUTTON
+        ---------------------------------------- -->
+
+        <button
+            class="nav-toggle"
+            aria-label="Toggle menu"
+        >
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="wrap">
+
+
+        <!-- ====================================
+             HERO SECTION
+        ==================================== -->
+
+        <section class="hero">
+
+
+            <span class="eyebrow">
+                Learning at Wistora
+            </span>
+
+
+            <h1>
+                Courses built for the next role.
+            </h1>
+
+
+            <p>
+                Explore practical learning paths designed
+                around technology, data, digital growth
+                and people operations.
+            </p>
+
+
+        </section>
+
+
+        <!-- ====================================
+             COURSE LIST
+        ==================================== -->
+
+        <section class="grid">
+
+
+            <article class="card">
+
+                <img src="thumpnails/AI-Integrated Python Full Stack.jpeg" alt="AI-integrated Python full stack course" loading="lazy">
+
+                <h2>
+                    AI-Integrated Python Full Stack
+                </h2>
+
+                <p>
+                    Build modern web applications with Python,
+                    APIs and intelligent product features.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <img src="thumpnails/Data Science.jpeg" alt="Data Science course" loading="lazy">
+
+                <h2>
+                    Data Science
+                </h2>
+
+                <p>
+                    Learn to explore data, build predictive models
+                    and turn insights into better decisions.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <img src="thumpnails/Data Analytics.jpeg" alt="Data Analytics course" loading="lazy">
+
+                <h2>
+                    Data Analytics
+                </h2>
+
+                <p>
+                    Build dashboards, work with practical tools
+                    and communicate clear business insights.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <img src="thumpnails/AI-Integrated Digital Marketing.jpeg" alt="AI-integrated digital marketing course" loading="lazy">
+
+                <h2>
+                    AI-Integrated Digital Marketing
+                </h2>
+
+                <p>
+                    Plan smarter campaigns with AI-assisted content,
+                    audience insights and performance strategy.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <img src="thumpnails/HR Training.jpeg" alt="HR Training course" loading="lazy">
+
+                <h2>
+                    HR Training
+                </h2>
+
+                <p>
+                    Strengthen recruitment, employee engagement
+                    and practical people-management skills.
+                </p>
+
+            </article>
+
+
+            <article class="card">
+
+                <img src="thumpnails/Agent AI and LLM.jpeg" alt="Agent AI and LLM course" loading="lazy">
+
+                <h2>
+                    Agent AI and LLM
+                </h2>
+
+                <p>
+                    Understand language models and create useful
+                    AI agents for real-world workflows.
+                </p>
+
+            </article>
+
+
+        </section>
+
+
+    </main>
+
+
+</body>
+
+</html>
