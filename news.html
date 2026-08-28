@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <!-- ========================================
+         META INFORMATION
+    ======================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>News | Wistora IQ Solutions</title>
+
+    <link
+        rel="icon"
+        href="favicon.png"
+    >
+
+
+    <!-- ========================================
+         GOOGLE FONT
+    ======================================== -->
+
+    <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    >
+
+
+    <!-- ========================================
+         CSS
+    ======================================== -->
+
+    <style>
+
+        /* ========================================
+           ROOT VARIABLES
+        ======================================== */
+
+        :root {
+            --navy: #0B0E2E;
+            --cyan: #4FE3F0;
+            --secondary: #5B6478;
+            --text: #111431;
+            --background: #F5F8FB;
+            --border: #E1E5ED;
+            --accent: #149BB5;
+            --white: #FFFFFF;
+        }
+
+
+        /* ========================================
+           GLOBAL STYLES
+        ======================================== */
+
+        * {
+            box-sizing: border-box;
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            font-family: "Inter", sans-serif;
+
+            background: var(--background);
+
+            color: var(--text);
+        }
+
+
+        a {
+            color: inherit;
+
+            text-decoration: none;
+        }
+
+
+        /* ========================================
+           NAVIGATION
+        ======================================== */
+
+        .nav {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+            right: 0;
+
+            z-index: 10;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 18px 32px;
+
+            background: rgba(11, 14, 46, 0.82);
+
+            backdrop-filter: blur(14px);
+
+            color: var(--white);
+        }
+
+
+        /* ----------------------------------------
+           BRAND
+        ---------------------------------------- */
+
+        .nav-brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+
+        .nav-brand img {
+            height: 34px;
+        }
+
+
+        .nav-brand span {
+            display: block;
+
+            font-weight: 600;
+
+            font-size: 15px;
+        }
+
+
+        .nav-brand small {
+            display: block;
+
+            color: var(--cyan);
+
+            font-size: 9px;
+
+            letter-spacing: 0.1em;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ----------------------------------------
+           NAVIGATION LINKS
+        ---------------------------------------- */
+
+        .nav-links {
+            display: flex;
+
+            align-items: center;
+
+            gap: 34px;
+        }
+
+
+        .nav-links > a,
+        .nav-more-toggle {
+            font-family: "Inter", sans-serif;
+
+            font-size: 13.5px;
+
+            font-weight: 500;
+
+            color: rgba(255, 255, 255, 0.78);
+
+            padding: 4px 0;
+        }
+
+
+        /* ========================================
+           MORE DROPDOWN
+        ======================================== */
+
+        .nav-more {
+            position: relative;
+        }
+
+
+        .nav-more-toggle {
+            background: none;
+
+            border: none;
+
+            color: var(--white);
+
+            cursor: pointer;
+        }
+
+
+        .nav-more-toggle::after {
+            content: " ▾";
+
+            color: var(--cyan);
+
+            font-size: 10px;
+        }
+
+
+        .nav-more-menu {
+            position: absolute;
+
+            top: 32px;
+            left: -16px;
+
+            min-width: 165px;
+
+            padding: 9px;
+
+            list-style: none;
+
+            background: var(--navy);
+
+            border: 1px solid rgba(79, 227, 240, 0.3);
+
+            border-radius: 10px;
+
+            opacity: 0;
+
+            visibility: hidden;
+
+            transform: translateY(6px);
+
+            transition: 0.2s;
+        }
+
+
+        .nav-more-menu a {
+            display: block;
+
+            padding: 9px 10px;
+        }
+
+
+        .nav-more:hover .nav-more-menu,
+        .nav-more:focus-within .nav-more-menu {
+            opacity: 1;
+
+            visibility: visible;
+
+            transform: none;
+        }
+
+
+        /* ========================================
+           MOBILE MENU BUTTON
+        ======================================== */
+
+        .nav-toggle {
+            display: none;
+
+            flex-direction: column;
+
+            gap: 5px;
+
+            background: none;
+
+            border: none;
+        }
+
+
+        .nav-toggle span {
+            width: 22px;
+
+            height: 2px;
+
+            background: var(--white);
+        }
+
+
+        /* ========================================
+           MAIN CONTENT
+        ======================================== */
+
+        .wrap {
+            max-width: 1050px;
+
+            margin: auto;
+
+            padding: 140px 25px 80px;
+        }
+
+
+        /* ========================================
+           HERO SECTION
+        ======================================== */
+
+        .eyebrow {
+            color: var(--accent);
+
+            font-size: 12px;
+
+            letter-spacing: 0.12em;
+
+            text-transform: uppercase;
+        }
+
+
+        .hero h1 {
+            font-size: clamp(38px, 6vw, 70px);
+
+            margin: 14px 0;
+        }
+
+
+        .hero p {
+            max-width: 620px;
+
+            color: var(--secondary);
+
+            line-height: 1.7;
+        }
+
+        .hero { animation: newsHeroIn 0.9s cubic-bezier(.22,.9,.31,1) both; }
+        .hero h1 { animation: newsTitleIn 0.85s cubic-bezier(.22,.9,.31,1) 0.12s both; }
+        .hero p { animation: newsCopyIn 0.8s cubic-bezier(.22,.9,.31,1) 0.26s both; }
+
+
+        /* ========================================
+           NEWS STORY
+        ======================================== */
+
+        .story {
+            margin-top: 42px;
+
+            background: var(--white);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            position: relative;
+            overflow: hidden;
+            animation: newsStoryIn 0.9s cubic-bezier(.22,.9,.31,1) 0.35s both;
+            transition: transform 0.3s cubic-bezier(.22,.9,.31,1), box-shadow 0.3s;
+        }
+
+        .story::before { content: ""; position: absolute; top: 0; left: -35%; width: 24%; height: 2px; background: var(--cyan); animation: newsScan 2.8s ease-in-out 1s infinite; }
+        .story:hover { transform: translateY(-6px); box-shadow: 0 22px 35px -24px rgba(11,14,46,.55); }
+
+        @keyframes newsHeroIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes newsTitleIn { from { opacity: 0; letter-spacing: .08em; } to { opacity: 1; letter-spacing: normal; } }
+        @keyframes newsCopyIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes newsStoryIn { from { opacity: 0; transform: translateY(30px) rotateX(5deg); } to { opacity: 1; transform: translateY(0) rotateX(0); } }
+        @keyframes newsScan { 0%, 15% { left: -35%; } 55%, 100% { left: 110%; } }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+        }
+
+
+        .story h2 {
+            margin-bottom: 10px;
+        }
+
+
+        .story p {
+            color: var(--secondary);
+
+            line-height: 1.7;
+        }
+
+
+        /* ========================================
+           RESPONSIVE DESIGN
+        ======================================== */
+
+        /* ----------------------------------------
+           TABLET
+        ---------------------------------------- */
+
+        @media (max-width: 980px) {
+
+            .nav-links {
+                display: none;
+            }
+
+
+            .nav-toggle {
+                display: flex;
+            }
+
+        }
+
+
+        /* ----------------------------------------
+           MOBILE
+        ---------------------------------------- */
+
+        @media (max-width: 700px) {
+
+            .nav {
+                padding: 16px 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ========================================
+         NAVIGATION
+    ======================================== -->
+
+    <nav class="nav">
+
+
+        <!-- ----------------------------------------
+             BRAND
+        ---------------------------------------- -->
+
+        <a
+            href="index.html#top"
+            class="nav-brand"
+        >
+
+            <img
+                src="logo-full-web.png"
+                alt="Wistora IQ Solutions logo"
+            >
+
+
+            <div>
+
+                <span>
+                    WISTORA IQ SOLUTIONS
+                </span>
+
+                <small>
+                    Technology Meets Intelligence
+                </small>
+
+            </div>
+
+        </a>
+
+
+        <!-- ----------------------------------------
+             DESKTOP NAVIGATION
+        ---------------------------------------- -->
+
+        <div class="nav-links">
+
+
+            <a href="index.html#about">
+                About
+            </a>
+
+
+            <a href="index.html#services">
+                Services
+            </a>
+
+
+            <a href="index.html#why">
+                Why Us
+            </a>
+
+
+            <a href="index.html#career">
+                Programs
+            </a>
+
+
+            <a href="careers.html">
+                Careers
+            </a>
+
+
+            <!-- ------------------------------------
+                 MORE DROPDOWN
+            ------------------------------------- -->
+
+            <div class="nav-more">
+
+
+                <button class="nav-more-toggle">
+                    More
+                </button>
+
+
+                <ul class="nav-more-menu">
+
+
+                    <li>
+                        <a href="courses.html">
+                            Courses
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="gallery.html">
+                            Gallery
+                        </a>
+                    </li>
+
+
+
+                    <li>
+                        <a href="testimonials.html">
+                            Testimonials
+                        </a>
+                    </li>
+
+
+                    <li>
+                        <a href="news.html">
+                            News
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+
+
+            <a href="index.html#contact">
+                Contact
+            </a>
+
+
+        </div>
+
+
+        <!-- ----------------------------------------
+             MOBILE MENU BUTTON
+        ---------------------------------------- -->
+
+        <button
+            class="nav-toggle"
+            aria-label="Toggle menu"
+        >
+
+            <span></span>
+
+            <span></span>
+
+            <span></span>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- ========================================
+         MAIN CONTENT
+    ======================================== -->
+
+    <main class="wrap">
+
+
+        <!-- ====================================
+             HERO SECTION
+        ==================================== -->
+
+        <section class="hero">
+
+
+            <span class="eyebrow">
+                From Wistora
+            </span>
+
+
+            <h1>
+                News
+            </h1>
+
+
+            <p>
+                Updates from our work across intelligent software,
+                digital growth, HR and career learning.
+            </p>
+
+
+        </section>
+
+
+        <!-- ====================================
+             NEWS STORY
+        ==================================== -->
+
+        <article class="story">
+
+
+            <h2>
+                News and updates are coming soon
+            </h2>
+
+
+            <p>
+                Check back here for company announcements,
+                learning events and new project stories.
+            </p>
+
+
+        </article>
+
+
+    </main>
+
+
+</body>
+
+</html>
